@@ -6,8 +6,8 @@ function y = fmin_fun(par, newFeature ,x )
 ratt = x2ratt(x, par);
 
 
-fname = {'D55','D56','D65','D68','D76','D78','D95','D94'};
-vname = {'Contrast','Correlation'};
+fname = {'D55','D56','D65','D68','D76','D78','D95','D94','D1','D46','D47','D49'};
+vname = {'Contrast','Correlation','Energy'};
 
 anss = zeros(1,16);
 % for ttt = 1:16
@@ -19,7 +19,7 @@ for i = 1:length(fname)
         for j = 1:length(vname)
             xin(j) = newFeature.(fname{i}).(vname{j})(k);
         end
-        [B, BA] = activeRuleNew_2(ratt, xin);
+        [B, BA] = activeRuleNew_3(ratt, xin);
         
         B(i) = 1 - B(i);
         yd = yd + sum(B);

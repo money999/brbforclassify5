@@ -2,10 +2,10 @@ function [ ratt, par ] =  initRuleGivenData( )
 %UNTITLED2 此处显示有关此函数的摘要
 %   此处显示详细说明
 
-preN = 2;%前提属性个数
-preNE = [8 5];%每个前提属性候选值个数
+preN = 3;%前提属性个数
+preNE = [8 5 5];%每个前提属性候选值个数
 rNum = prod(preNE);%规则数
-BNum = 8;%等级评价数量
+BNum = 12;%等级评价数量
 
 prAwFlag = false;%前提属性权重是否参与训练
 prAFlag = true;%前提属性候选值是否参与训练
@@ -32,16 +32,14 @@ gPraA = cell(1,preN);%前提属性候选值采用细胞矩阵，每个元存储候选值数组，矩阵大小
 gB = ones(rNum,BNum);
 gB(:) = gB(:)./BNum;
 
-
-
 gwR = ones(1,rNum);
 
-gu = [-0.5 0 0.5 0.2 0.3 0.4 0.5 0.5];
+gu = [-0.5 0 0.5 0.2 0.3 0.4 0.5 0.5 0.5 0.5 0.5 0.5];
 %gu = ones(1,BNum);
 
-gPraW = [1 1];
+gPraW = [1 1 1];
 
-gPraA = {[0 0.85 1.2 1.7 4.5 6 8 10],[0.5 0.7 0.85 0.95 1]};
+gPraA = {[0 0.85 1.2 1.7 4.5 6 8 10],[0.5 0.7 0.85 0.95 1],[0.01 0.03 0.06 0.1 0.35]};
 
 if (size(gB,1) ~= rNum || size(gB,2) ~= BNum)
     error('置信度矩阵gB出错');

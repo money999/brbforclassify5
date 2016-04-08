@@ -1,26 +1,26 @@
 % clear global
 
-% clear 
+clear 
  load('14图0度仅共生5特征.mat');
-% [ ratt, par] = initRuleGivenData();
-% x0 = ratt2x(ratt, par);
-% [A,b,Aeq,beq,lb,ub] = genConstraint(ratt, x0, par);
-% x0 = x0';
-% lb = lb';
-% ub = ub';
-% 
-% options = optimset( 'Display' , 'Iter' , 'MaxFunEvals'...
-%     , 10000*length(x0) , 'MaxIter', 10000 , 'TolFun' , 1e-10 , 'TolX' , 1e-6 , 'TolCon', 1e-6);
-% [x,fval,flag] = fmincon(@(x) fmin_fun(par, newFeature, x ) ...
-%     ,x0, A, b, Aeq, beq, lb, ub,[],options);
-% rattNew = x2ratt(x, par);
+[ ratt, par] = initRuleGivenData();
+x0 = ratt2x(ratt, par);
+[A,b,Aeq,beq,lb,ub] = genConstraint(ratt, x0, par);
+x0 = x0';
+lb = lb';
+ub = ub';
 
-% % yesss = fmin_fun(par,newFeature,x);
+options = optimset( 'Display' , 'Iter' , 'MaxFunEvals'...
+    , 10000*length(x0) , 'MaxIter', 10000 , 'TolFun' , 1e-10 , 'TolX' , 1e-6 , 'TolCon', 1e-6);
+[x,fval,flag] = fmincon(@(x) fmin_fun(par, newFeature, x ) ...
+    ,x0, A, b, Aeq, beq, lb, ub,[],options);
+rattNew = x2ratt(x, par);
+
+% yesss = fmin_fun(par,newFeature,x);
 
 disp('dddd');
 
-fname = {'D55','D56','D65','D68','D76','D78','D95','D94'};
-vname = {'Contrast','Correlation'};
+fname = {'D55','D56','D65','D68','D76','D78','D95','D94','D101','D46','D47','D49'};
+vname = {'Contrast','Correlation','Energy'};
 
 % for ttt = 1:16
 ttt = 16;%%%%%%%%%%%%%%%%%%%%每张图片取前多少个出来 
